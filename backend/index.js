@@ -105,15 +105,20 @@ app.post(
 
 // Route to get user chats
 app.get("/api/userchats", ClerkExpressRequireAuth(), async (req, res) => {
-  const userId = req.auth.userId; // Get the userId from the authenticated user
   try {
-    const userChats = await userChat.find({ userId }); // Find the userChats by userId
-    res.status(200).send(userChats[0].chats); // Send the chats array of the first userChat document
+    const userId = req.auth.userId;
+    if (!userId) {
+      console.error('Unauthorized: No userId found');
+      return res.status(401).send("Unauthorized: No userId found in auth context");
+    }
+    const userChats = await userChat.find({ userId });
+    res.status(200).send(userChats[0].chats);
   } catch (error) {
-    console.log(error); // Log any errors
-    res.status(500).send("Error creating user chat"); // Respond with an error message
+    console.error('Error fetching user chats:', error);
+    res.status(500).send("Error fetching user chats");
   }
 });
+
 
 // Route to get a specific chat by ID
 app.get("/api/chats/:id", ClerkExpressRequireAuth(), async (req, res) => {
