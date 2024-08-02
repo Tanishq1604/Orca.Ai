@@ -25,7 +25,7 @@ const app = express();
 // Set up CORS to allow requests from the client
 app.use(
   cors({
-    origin: process.env.CLIENT_URL_DEPLOY, // Allow only this origin to access the server
+    origin: "https://orca-ai-1.onrender.com", // Allow only this origin to access the server
     methods: ["GET", "POST", "PUT"], // Allow only these methods
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
