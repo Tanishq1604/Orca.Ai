@@ -9,6 +9,7 @@ const Chat_list = () => {
     queryKey: ["userchats"], // Key for the query cache
     queryFn: () =>
       fetch("https://orca-ai-backend2.onrender.com/api/userchats", {
+        method : "Get",
         credentials: "include", // Include cookies for authentication
       }).then((res) => res.json()), // Convert response to JSON
   });
