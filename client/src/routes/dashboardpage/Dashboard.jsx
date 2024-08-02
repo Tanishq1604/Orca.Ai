@@ -13,7 +13,7 @@ const Dashboard = () => {
   const mutation = useMutation({
     mutationFn: (text) => {
       // Mutation function to create a new chat by sending a POST request to the server
-      return fetch(`https://orca-ai-q9xm.onrender.com/api/chats`, {
+      return fetch("https://orca-ai-backend2.onrender.com/api/chats", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
