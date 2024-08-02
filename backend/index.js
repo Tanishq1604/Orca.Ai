@@ -108,6 +108,7 @@ app.post(
 app.get("/api/userchats", ClerkExpressRequireAuth(), async (req, res) => {
   try {
     console.log(req.auth);
+    console.log(req.auth.userId);
     const userId = req.auth.userId;
     if (!userId) {
       console.error('Unauthorized: No userId found');
