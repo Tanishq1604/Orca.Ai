@@ -8,7 +8,7 @@ const Chat_list = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["userchats"], // Key for the query cache
     queryFn: () =>
-      fetch(`https://orca-ai-q9xm.onrender.com/api/userchats`, {
+      fetch("https://orca-ai-backend2.onrender.com/api/userchats", {
         credentials: "include", // Include cookies for authentication
       }).then((res) => res.json()), // Convert response to JSON
   });
