@@ -5,6 +5,7 @@ import { IKImage } from "imagekitio-react"; // Importing IKImage for image handl
 import model from "../../lib/gemini.js"; // Importing the AI model for generating responses
 import Markdown from "react-markdown"; // Importing Markdown component to render markdown content
 import { useMutation, useQueryClient } from "@tanstack/react-query"; // Importing React Query hooks for data fetching and mutation
+import { BACK_URL } from "../../../url.js";
 
 const NewPrompt = ({ data }) => {
   // Local state to manage question, answer, and image data
@@ -46,7 +47,7 @@ const NewPrompt = ({ data }) => {
   // Mutation function to update chat data in the database
   const mutation = useMutation({
     mutationFn: () => {
-      return fetch("https://orca-ai-backend2.onrender.com/api/chats/${data._id}", {
+      return fetch(`${BACK_URL}/api/chats/${data._id}`, {
         method: "PUT", // HTTP method to update data
         credentials: "include", // Include cookies in the request
         headers: { "Content-Type": "application/json" }, // Set content type to JSON

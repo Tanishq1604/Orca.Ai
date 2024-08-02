@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query"; // Importing useQuery hook fro
 import { useLocation } from "react-router-dom"; // Importing useLocation hook for accessing the current URL
 import Markdown from "react-markdown"; // Importing Markdown component for rendering markdown text
 import { IKImage } from "imagekitio-react"; // Importing IKImage component for handling images with ImageKit
+import { BACK_URL } from "../../../url.js";
 
 const Chat = () => {
   const path = useLocation().pathname; // Getting the current path from the URL
@@ -14,7 +15,7 @@ const Chat = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["chat", chatId], // Unique query key
     queryFn: () =>
-      fetch("https://orca-ai-backend2.onrender.com/api/chats/${chatId}", {
+      fetch(`${BACK_URL}/api/chats/${chatId}`, {
         credentials: "include", // Including credentials in the request
       }).then((res) => res.json()), // Parsing the response as JSON
   });

@@ -3,6 +3,7 @@ import "./Dashboard.css"; // Importing the CSS file for styling the Dashboard co
 import { useQueryClient } from "@tanstack/react-query"; // Importing useQueryClient hook from React Query for query management
 import { useMutation } from "@tanstack/react-query"; // Importing useMutation hook from React Query for handling mutations
 import { useNavigate } from "react-router-dom"; // Importing useNavigate hook for navigation
+import { BACK_URL } from "../../../url";
 
 // Defining the Dashboard functional component
 const Dashboard = () => {
@@ -13,7 +14,7 @@ const Dashboard = () => {
   const mutation = useMutation({
     mutationFn: (text) => {
       // Mutation function to create a new chat by sending a POST request to the server
-      return fetch("https://orca-ai-backend2.onrender.com/api/chats", {
+      return fetch(`${BACK_URL}/api/chats`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

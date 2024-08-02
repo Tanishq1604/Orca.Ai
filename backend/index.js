@@ -23,13 +23,12 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 // Set up CORS to allow requests from the client
-app.use(
-  cors({
-    origin: ["https://orca-ai-1.onrender.com"], // Allow only this origin to access the server
-    methods: ["GET", "POST", "PUT"], // Allow only these methods
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-  })
-);
+const corsOptions = {
+  origin: process.env.CLIENT_URL_DEPLOY,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // Configure ImageKit with environment variables
 const imagekit = new ImageKit({
@@ -97,7 +96,7 @@ app.post(
       // Send the new chat ID as response
       res.status(201).send(newChat._id); // Respond with the new chat's ID
     } catch (error) {
-      console.log(error); // Log any errors
+      console.error("Error creating chat:", error); // Log any errors
       res.status(500).send("Error creating chat"); // Respond with an error message
     }
   }
@@ -119,16 +118,18 @@ app.get("/api/userchats", ClerkExpressRequireAuth(), async (req, res) => {
   }
 });
 
-
 // Route to get a specific chat by ID
 app.get("/api/chats/:id", ClerkExpressRequireAuth(), async (req, res) => {
   const userId = req.auth.userId; // Get the userId from the authenticated user
   try {
     const chat = await Chat.findOne({ _id: req.params.id, userId }); // Find the chat by ID and userId
+    if (!chat) {
+      return res.status(404).send("Chat not found"); // Respond if chat not found
+    }
     res.status(200).send(chat); // Send the chat document
   } catch (error) {
-    console.log(error); // Log any errors
-    res.status(500).send("Error fetching chats"); // Respond with an error message
+    console.error("Error fetching chat:", error); // Log any errors
+    res.status(500).send("Error fetching chat"); // Respond with an error message
   }
 });
 
@@ -157,8 +158,8 @@ app.put("/api/chats/:id", ClerkExpressRequireAuth(), async (req, res) => {
     );
     res.status(200).send(updatedChat); // Send the updated chat
   } catch (error) {
-    console.log(error); // Log any errors
-    res.status(500).send("Error fetching chats"); // Respond with an error message
+    console.error("Error updating chat:", error); // Log any errors
+    res.status(500).send("Error updating chat"); // Respond with an error message
   }
 });
 
@@ -175,5 +176,5 @@ app.get("/", (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log("server running"); // Log a message when the server starts
+  console.log(`Server running on port ${port}`); // Log a message when the server starts
 });

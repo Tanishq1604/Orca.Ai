@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Chat_list.css";
 import { useQuery } from "@tanstack/react-query";
+import { BACK_URL } from "../../../url";
 
 const Chat_list = () => {
   // Fetching user chats data from the API
   const { isLoading, error, data } = useQuery({
     queryKey: ["userchats"], // Key for the query cache
     queryFn: () =>
-      fetch("https://orca-ai-backend2.onrender.com/api/userchats", {
+      fetch(`${BACK_URL}/api/userchats`, {
         method : "Get",
         credentials: "include", // Include cookies for authentication
       }).then((res) => res.json()), // Convert response to JSON
