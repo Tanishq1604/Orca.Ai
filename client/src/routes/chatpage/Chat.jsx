@@ -14,7 +14,7 @@ const Chat = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["chat", chatId], // Unique query key
     queryFn: () =>
-      fetch(`https://orca-ai-q9xm.onrender.com/api/chats/${chatId}`, {
+      fetch("https://orca-ai-backend2.onrender.com/api/chats/${chatId}", {
         credentials: "include", // Including credentials in the request
       }).then((res) => res.json()), // Parsing the response as JSON
   });
