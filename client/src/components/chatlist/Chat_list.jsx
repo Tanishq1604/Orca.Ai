@@ -19,7 +19,7 @@ const Chat_list = () => {
       {/* Links for navigation */}
       <Link to="/dashboard">Create a new Chat</Link>
       <Link to="/">Explore Orca AI</Link>
-      <a href="https://main-portfolio-swart-six.vercel.app">Contact Us</a>
+      <a href="https://main-portfolio-lovat.vercel.app/">Contact Us</a>
       <hr />
       <span className="title">RECENT CHATS</span>
       <div className="list">
