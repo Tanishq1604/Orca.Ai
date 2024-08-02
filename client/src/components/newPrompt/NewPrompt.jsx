@@ -63,7 +63,7 @@ const NewPrompt = ({ data }) => {
         .then(() => {
           setque(""); // Clear the question state
           setans(""); // Clear the answer state
-          // setimage({ isLoading: false, error: "", dbData: {}, aiData: {} }); // Clear the image state (commented out)
+          setimage({ isLoading: false, error: "", dbData: {}, aiData: {} }); // Clear the image state (commented out)
           if (inputRef.current) inputRef.current.value = ""; // Clear the input field
         });
     },
