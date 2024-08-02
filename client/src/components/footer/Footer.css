@@ -1,0 +1,59 @@
+.bot {
+  width: 25%;
+  height: 25%;
+  object-fit: contain;
+  animation: 3s ease-in-out infinite alternate botAnimate;
+}
+
+@keyframes botAnimate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+  }
+  .second {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    gap: 30vw;
+    .left {
+      .li {
+        list-style: none;
+        cursor: pointer;
+        font-size: 15px;
+        display: flex;
+        margin-top: 10px;
+        gap: 20px;
+      }
+    }
+    .right {
+      text-align: center;
+      .li {
+        margin-top: 20px;
+        text-align: center;
+        list-style: none;
+        cursor: pointer;
+        font-size: 15px;
+        display: flex;
+        gap: 50px;
+      }
+      a {
+        color: white;
+      }
+    }
+  }
+}
