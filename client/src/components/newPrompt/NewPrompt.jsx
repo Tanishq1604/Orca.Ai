@@ -46,7 +46,7 @@ const NewPrompt = ({ data }) => {
   // Mutation function to update chat data in the database
   const mutation = useMutation({
     mutationFn: () => {
-      return fetch(`${import.meta.env.VITE_API_URL}/api/chats/${data._id}`, {
+      return fetch(`https://orca-ai-q9xm.onrender.com/api/chats/${data._id}`, {
         method: "PUT", // HTTP method to update data
         credentials: "include", // Include cookies in the request
         headers: { "Content-Type": "application/json" }, // Set content type to JSON
