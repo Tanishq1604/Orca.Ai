@@ -28,6 +28,7 @@ const corsOptions = {
   credentials: true,
 };
 
+
 app.use(cors(corsOptions));
 
 // Configure ImageKit with environment variables
