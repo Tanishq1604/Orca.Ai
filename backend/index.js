@@ -107,6 +107,7 @@ app.post(
 // Route to get user chats
 app.get("/api/userchats", ClerkExpressRequireAuth(), async (req, res) => {
   try {
+    console.log(req.auth);
     const userId = req.auth.userId;
     if (!userId) {
       console.error('Unauthorized: No userId found');
