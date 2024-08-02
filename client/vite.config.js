@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3001", // Ensure this matches your backend server port
+        target: "https://orca-ai-nu.vercel.app", // Ensure this matches your backend server port
         changeOrigin: true,
         secure: false,
       },

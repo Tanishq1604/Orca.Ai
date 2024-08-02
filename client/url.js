@@ -1,1 +1,1 @@
-export const BACK_URL= "http://localhost:3001"
+export const BACK_URL= "https://orca-ai-nu.vercel.app"
