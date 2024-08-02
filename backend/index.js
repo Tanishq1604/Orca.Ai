@@ -22,13 +22,14 @@ const port = process.env.PORT || 3000;
 // Create an instance of Express
 const app = express();
 
-// Set up CORS to allow requests from the client
 const corsOptions = {
-  origin: process.env.CLIENT_URL_DEPLOY,
-  credentials: true,
+  origin: 'https://orca-ai-cphf.vercel.app', // Replace with your frontend URL
+  methods: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+  allowedHeaders: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+  credentials: true
 };
 
-
+// Use CORS middleware with the specified options
 app.use(cors(corsOptions));
 
 // Configure ImageKit with environment variables
